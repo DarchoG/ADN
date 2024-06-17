@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QToolBar
+from PyQt6.QtWidgets import QApplication, QMainWindow, QGridLayout, QFrame, QVBoxLayout, QWidget, QSizePolicy
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtGui import QIcon, QPixmap
 
@@ -25,7 +25,9 @@ class Ventana:
         ventana.setWindowTitle("ADN")
         ventana.setStyleSheet("background-color: {};".format(self.colorFondo))
 
-        ventana.show()        
+        self.generarFrames(ventana)
+
+        ventana.show()  
         app.exec() # Mainloop de tkinter
 
     def obtenerProporciones(self, Ancho, Largo):
@@ -37,3 +39,23 @@ class Ventana:
         Y =  (pantallaSize.height()) * Largo // 100
 
         return X, Y;
+
+    def generarFrames(self, Ventana):
+
+        widgetPrincipal = QWidget(Ventana)
+        Contenedor = QVBoxLayout(widgetPrincipal)
+
+        primerFrame = QFrame()
+        primerFrame.setMinimumSize(*self.obtenerProporciones(100, 5))
+        primerFrame.setStyleSheet(f"background-color : {self.segundoGris};")
+        Contenedor.addWidget(primerFrame)
+
+        segundoFrame = QFrame()
+        segundoFrame.setMinimumSize(*self.obtenerProporciones(100, 65))
+        segundoFrame.setStyleSheet(f"background-color: red;")
+        Contenedor.addWidget(segundoFrame)
+
+        tercerFrame = QFrame()
+        tercerFrame.setMinimumSize(*self.obtenerProporciones(100, 30))
+        tercerFrame.setStyleSheet(f"background-color: blue;")
+        Contenedor.addWidget(tercerFrame)
