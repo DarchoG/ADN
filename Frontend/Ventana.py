@@ -46,16 +46,18 @@ class Ventana:
         Contenedor = QVBoxLayout(widgetPrincipal)
 
         primerFrame = QFrame()
-        primerFrame.setMinimumSize(*self.obtenerProporciones(100, 5))
         primerFrame.setStyleSheet(f"background-color : {self.segundoGris};")
-        Contenedor.addWidget(primerFrame)
+        primerFrame.setContentsMargins(0, 0, 0, 0)
+        Contenedor.addWidget(primerFrame, 5)
 
         segundoFrame = QFrame()
-        segundoFrame.setMinimumSize(*self.obtenerProporciones(100, 65))
         segundoFrame.setStyleSheet(f"background-color: red;")
-        Contenedor.addWidget(segundoFrame)
+        segundoFrame.setContentsMargins(0, 0, 0, 0)
+        Contenedor.addWidget(segundoFrame, 80)
 
         tercerFrame = QFrame()
-        tercerFrame.setMinimumSize(*self.obtenerProporciones(100, 30))
         tercerFrame.setStyleSheet(f"background-color: blue;")
-        Contenedor.addWidget(tercerFrame)
+        tercerFrame.setContentsMargins(0, 0, 0, 0)
+        Contenedor.addWidget(tercerFrame, 15)
+
+        Ventana.setCentralWidget(widgetPrincipal)
